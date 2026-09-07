@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "CHANGE_ME" # namn på bucket från bootstrap
+    bucket = "team6-tfstate-6307cc8b"
     prefix = "terraform/state"
   }
 }
