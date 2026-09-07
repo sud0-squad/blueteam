@@ -21,17 +21,21 @@ ssh_users = [
   {
     username   = "coolcoder0110"
     public_key = "
+  }
 
   {
     username   = "shayangholami-afk"
     public_key = "
+  }
 
   {
     username   = "juliachas"
     public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMiuSbXjYSxQcMz1hXb+LD8MMgYcR2Rzh9n7TrGA7gDm"
+  }
 
   {
     username   = "sebastianilia7"
     public_key = "
+  }
 
 ]
