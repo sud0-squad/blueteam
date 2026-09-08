@@ -1,5 +1,6 @@
 project_id = "itsx25-lab"
 team_id    = 6
+github_repo = "org/repo"
 
 ssh_users = [
   {
@@ -20,7 +21,7 @@ ssh_users = [
   },
   {
     username   = "shayangholami-afk"
-    public_key = ""
+    public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMt8H215W5S1+jyO+Y47i1gpl1pIOP64YTGycyixvM1d"
   },
   {
     username   = "juliachas"
