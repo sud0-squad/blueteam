@@ -58,6 +58,14 @@ resource "google_compute_route" "tailnet_via_jumphost" {
   tags              = ["no-external-ip"]
 }
 
+resource "google_compute_instance_iam_member" "jumphost_os_login" {
+  for_each      = toset(var.os_admin_users)
+  instance_name = google_compute_instance.jumphost.name
+  zone          = google_compute_instance.jumphost.zone
+  role          = "roles/compute.osAdminLogin"
+  member        = "user:${each.value}"
+}
+
 resource "google_compute_resource_policy" "daily_schedule" {
   name   = "team${var.team_id}-daily-schedule"
   region = var.region
@@ -74,7 +82,8 @@ resource "google_compute_resource_policy" "daily_schedule" {
 }
 
 resource "google_compute_instance" "jumphost" {
-  name         = "team${var.team_id}-jumphost"
+  # name         = "team${var.team_id}-jumphost"
+  name         = "team-jumphost"
   machine_type = "e2-micro"
   zone         = local.jumphost_zone
 
@@ -106,6 +115,7 @@ resource "google_compute_instance" "jumphost" {
   }
 
   metadata = {
+    enable-oslogin = "TRUE"
     ssh-keys               = join("\n", [for user in var.ssh_users : "${user.username}:${user.public_key}"])
     block-project-ssh-keys = true
     startup-script         = <<-EOT
