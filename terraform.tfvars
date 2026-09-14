@@ -28,7 +28,7 @@ ssh_users = [
   },
   {
     username   = "sebastianilia7"
-    public_key = ""
+    public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEIptjIEAgA1VxVXKEiqfzbTL7+Nc8qp/G+6gFnlz9Uq"
   }
 
 ]
