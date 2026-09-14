@@ -91,6 +91,11 @@ resource "google_compute_instance" "jumphost" {
       size  = 20
     }
   }
+  
+  service_account {
+  email  = "team${var.team_id}-jumphost@${var.project_id}.iam.gserviceaccount.com"
+  scopes = ["cloud-platform"]
+  }
 
   network_interface {
     subnetwork = google_compute_subnetwork.team.id
