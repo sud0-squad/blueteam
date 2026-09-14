@@ -24,7 +24,7 @@ variable "primary_zone" {
 variable "os_admin_users" {
   type        = list(string)
   description = "List of Google identities (email addresses) granted OS Admin Login access to computing instance"
-  default     = [
+  default = [
     "dennis.heimbert@chasacademy.se",
     "daniel.wagenius@chasacademy.se",
     "julia.persson@chasacademy.se",
