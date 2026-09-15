@@ -82,8 +82,7 @@ resource "google_compute_resource_policy" "daily_schedule" {
 }
 
 resource "google_compute_instance" "jumphost" {
-  # name         = "team${var.team_id}-jumphost"
-  name         = "team-jumphost"
+  name         = "team${var.team_id}-jumphost"
   machine_type = "e2-micro"
   zone         = local.jumphost_zone
 
