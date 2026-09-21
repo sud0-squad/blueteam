@@ -83,9 +83,9 @@ resource "google_service_account" "cicd" {
   display_name = "CI/CD Pipeline Service Account"
 }
 
-resource "google_project_iam_member" "cicd_editor" {
+resource "google_project_iam_member" "cicd_compute_admin" {
   project = var.project_id
-  role    = "roles/editor"
+  role    = "roles/compute.admin"
   member  = "serviceAccount:${google_service_account.cicd.email}"
 }
 
@@ -94,8 +94,3 @@ resource "google_service_account_iam_member" "cicd_workload_identity" {
   role               = "roles/iam.workloadIdentityUser"
   member             = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.github.name}/attribute.repository/${var.github_repo}"
 }
-
-resource "google_service_account_key" "cicd" {
-  service_account_id = google_service_account.cicd.name
-}
-
