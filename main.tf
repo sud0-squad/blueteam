@@ -66,6 +66,14 @@ resource "google_compute_instance_iam_member" "jumphost_os_login" {
   member        = "user:${each.value}"
 }
 
+resource "google_compute_instance_iam_member" "primary_os_login" {
+  for_each      = toset(var.os_admin_users)
+  instance_name = google_compute_instance.primary.name
+  zone          = google_compute_instance.primary.zone
+  role          = "roles/compute.osAdminLogin"
+  member        = "user:${each.value}"
+}
+
 resource "google_compute_resource_policy" "daily_schedule" {
   name   = "team${var.team_id}-daily-schedule"
   region = var.region
